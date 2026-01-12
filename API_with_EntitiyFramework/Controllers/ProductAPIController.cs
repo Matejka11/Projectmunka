@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_with_EntitiyFramework.Controllers
 {
-    asd
+    
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class ProductAPIController : ControllerBase
