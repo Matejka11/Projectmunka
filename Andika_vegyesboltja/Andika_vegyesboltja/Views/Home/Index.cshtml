@@ -2,7 +2,43 @@
     ViewData["Title"] = "Home Page";
 }
 
+<!-- Header -->
+<header class="site-header">
+    <nav class="auth-links">
+        <a href="/Oldalak/BeleptettekOldal">Belépés</a>
+        <a href="/Oldalak/RegisztraltakOldal">Regisztráció</a>
+    </nav>
+</header>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Üdvözlöm Andika vegyesboltjának a felületén</h1>
+    <p><strong><a href="/Oldalak/TermekekOldal">Termékeink</a></strong></p>
 </div>
+
+<!-- Stílus -->
+<style>
+    .site-header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        padding: 15px 30px;
+        box-sizing: border-box;
+    }
+
+    .auth-links {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+
+    .auth-links a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .auth-links a:hover {
+        text-decoration: underline;
+    }
+</style>
