@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Andika_vegyesboltja.Models;
+﻿using Andika_vegyesboltja.Models;
+using Microsoft.AspNetCore.Components.RenderTree;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Andika_vegyesboltja.Controllers
 {
     public class TermekekController : Controller
     {
-        static List<Termekek> termekeks = new List<Termekek>()
+        static List<Termekek> termekek = new List<Termekek>()
 {
     // =========================
     // TISZTÁLKODÁSI SZEREK (1-10)
@@ -208,11 +209,50 @@ namespace Andika_vegyesboltja.Controllers
     new Termekek { Id=160, Name="Frozen zöldség pizza 400g", Price=1399, Darab=15, Fajta="mirelit dolgok", Link="Kepek/160.png" },
         };
 
-
-
         public IActionResult Index()
         {
-            return View();
+            return View(termekek);
+        }
+
+        public IActionResult Reszletek(int id)
+        {
+            var termek = termekek.Find(e => e.Id == id);
+            if (termek == null) return NotFound();
+
+            return View(termek);
+        }
+        /*public IActionResult Rendeles(int id)
+        {
+            var termek = termekek.Find(t => t.Id == id);
+            if (termek == null) return NotFound();
+
+            var rendeles = new Rendeles
+            {
+                Termekek = termek.Nev,
+                RegisztraltNev = regisztralt.Nev
+            };
+
+            return View(rendeles);
+        }
+        */
+        [HttpPost]
+        public IActionResult Visszajelzo(Rendeles model)
+        {
+            var termek = termekek.Find(t => t.Nev == model.RegisztraltNev);
+            if (termek == null) return NotFound();
+
+            var szak = egyetem.Szakok.Find(s => s.Nev == model.SzakNev);
+            if (szak == null) return NotFound();
+
+            if (szak.JelentkezettE)
+            {
+                ViewBag.Uzenet = "Már jelentkeztél erre a szakra!";
+                return View(model);
+            }
+
+            szak.JelentkezettE = true;
+            ViewBag.Uzenet = "Sikeres jelentkezés!";
+            return View("Visszajelzes", model);
         }
     }
 }
