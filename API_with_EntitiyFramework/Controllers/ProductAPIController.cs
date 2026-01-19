@@ -1,6 +1,7 @@
 ﻿using API_with_EntitiyFramework.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API_with_EntitiyFramework.Controllers
 {
@@ -17,14 +18,14 @@ namespace API_with_EntitiyFramework.Controllers
         private readonly ShopDbContext _context;
         public ProductAPIController(ShopDbContext context)
         {
-                _context = context;
+            _context = context;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var products = _context.Products.ToList();
-            return Ok(products);
+            var allproducts = _context.Products.ToList();
+            return Ok(allproducts);
         }
 
         //ID alapján egy terméket visszaadni
