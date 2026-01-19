@@ -11,7 +11,7 @@
         public string city { get; set;}  
         public int iranyitoszam { get; set;}
         public string utca { get; set;}
-        public int hazsyam { get; set;}
+        public int hazsyam { get; set; }
 
     }
 }
