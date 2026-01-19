@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
+
+<!-- Header -->
+<header class="site-header">
+    <nav class="auth-links">
+        <a href="/Oldalak/Belepes">Belépés</a>
+        <a href="/Oldalak/Regisztracio">Regisztráció</a>
+    </nav>
+</header>
+
+<div class="text-center">
+    <h1 class="display-4">Üdvözlöm Andika vegyesboltjának a felületén</h1>
+    <p><strong><a href="/Oldalak/Termekek">Termékeink</a></strong></p>
+</div>
+
+<!-- Stílus -->
+<style>
+    .site-header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        padding: 15px 30px;
+        box-sizing: border-box;
+    }
+
+    .auth-links {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+
+    .auth-links a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .auth-links a:hover {
+        text-decoration: underline;
+    }
+</style>
